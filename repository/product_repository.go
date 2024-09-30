@@ -37,9 +37,20 @@ func (r *productRepository) FindByID(id uint) (models.Product, error) {
 	return product, err
 }
 
+// func (r *productRepository) Create(product models.Product) (models.Product, error) {
+// 	err := r.db.Create(&product).Error
+// 	return product, err
+// }
+
 func (r *productRepository) Create(product models.Product) (models.Product, error) {
+	// Simpan produk ke database
 	err := r.db.Create(&product).Error
-	return product, err
+	if err != nil {
+		return models.Product{}, err
+	}
+
+	// Kembalikan produk yang berhasil dibuat (dengan ID yang telah di-generate oleh database)
+	return product, nil
 }
 
 func (r *productRepository) Update(product models.Product) (models.Product, error) {

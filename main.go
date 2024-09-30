@@ -39,6 +39,6 @@ func main() {
 	r.HandleFunc("/products/{id}", productController.DeleteProduct).Methods("DELETE")
 
 	// Jalankan server
-	log.Println("Server berjalan pada port 8080")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Println("Server berjalan pada port 8082")
+	log.Fatal(http.ListenAndServe(":8082", r))
 }
